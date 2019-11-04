@@ -1,0 +1,28 @@
+kubectl get services
+http://che-che.10.0.75.1.nip.io
+kubectl get services --namespace ingress-nginx
+chectl server:start --platform=docker-desktop --installer=helm
+netsh interface ip add address "Loopback" 10.110.119.28 255.255.255.255
+netsh interface ipv4 show config
+netsh interface ip delete address "Loopback Pseudo-Interface 1" addr=10.110.119.28 gateway=all
+
+netsh interface ipv4 set address name="Local Area Connection 2" static address=10.100.255.131 mask=255.255.255.240 store=active
+
+netsh interface ip add address "Loopback" 10.100.255.131 store=active
+
+http://10.100.255.131.nip.io
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+#   10.100.255.131  localhost
+# Added by Docker Desktop
+192.168.0.4 host.docker.internal
+192.168.0.4 gateway.docker.internal
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+
+chectl server:start --domain=10.100.255.131.nip.io --platform=docker-desktop
+
+netsh interface ip add address "Loopback" 10.100.255.131

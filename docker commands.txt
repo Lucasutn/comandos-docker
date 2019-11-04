@@ -1,0 +1,54 @@
+docker ps -a
+docker hello-world
+docker inspect 59ec631592c5
+
+docker inspect -f '{{ json .Config.Env }}' stoic_kilby
+docker rename stoic_kilby hola-mundo
+docker run --name hola-mundo2 hello-world
+docker logs hola-mundo
+docker rm hola-mundo2
+docker ps -aq
+docker rm $(docker ps -aq)
+docker run ubuntu
+docker run -it ubuntu
+ls -lac
+uname -a
+cat /etc/lsb-release
+winpty docker run -it ubuntu
+docker run ubuntu -f /dev/null 
+docker exec -it objective_brattain bash
+ps 
+ps -fea
+docker kill objective_brattain
+docker rm -f objective_brattain
+docker run --detach 
+docker run -d --name server nginx
+docker rm -f server
+docker run -d --name server -p 8080:80nginx
+docker volume ls 
+docker volume prune
+docker volume create dbdata
+$ docker run -d --name db --mount src=dbdata,dst=/data/ workspace:startdb
+docker run -d --name db --mount src=dbdata,dst=/data/db mongo
+docker exec -it db bash
+mongo
+use platzi
+db.users.insert({"name":"lucas"})
+docker rm -f db
+docker exec -it db bash
+docker run -d --name db mongo
+docker run --name db -d -v /c/Users/lucas/mongodata:/data/db mongo
+ls -lac /data/db
+docker image ls
+docker images
+dorker rmi
+docker pull redis
+touch Dockerfile
+docker build -t ubuntu:platzi .
+docker run -it ubuntu:platzi
+docker tag ubuntu:platzi lucashnfr/ubuntu:platzi
+docker push lucashnfr/ubuntu:platzi
+docker history ubuntu:platzi
+docker history --no-trunc ubuntu:platzi
+dive ubuntu:platzi (comandos tab y control U)
+
