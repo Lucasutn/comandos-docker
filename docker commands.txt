@@ -46,9 +46,63 @@ docker pull redis
 touch Dockerfile
 docker build -t ubuntu:platzi .
 docker run -it ubuntu:platzi
+ls -lac /usr/src
 docker tag ubuntu:platzi lucashnfr/ubuntu:platzi
 docker push lucashnfr/ubuntu:platzi
 docker history ubuntu:platzi
 docker history --no-trunc ubuntu:platzi
 dive ubuntu:platzi (comandos tab y control U)
+docker build -t platziapp .
+docker run --rm -p 3000:3000 platziapp
+Dockerfile(agregando COPY Y npx , nodemon a CMD)
+docker run --rm -p 3000:3000 -v /home/lucas/Desktop/asda/docker-master:/usr/src platziapp (en linux)
+(problemas con el comando, solucion, (1. npm install 2. npm audit fix))?? (en linux funciona tambien instale npm express)
+docker network ls
+docker network create --attachable platzinet
+docker run -d --name db mongo
+docker network connect platzinet db
+docker network inspect platzinet
+docker run -d --name app -p 3000:3000 --env MONGO_URL=mongodb://db:27017/test platziapp
+docker ps
+docker network connect platzinet app
+docker rm -f $(docker ps -aq)
+docker network rm platzinet
+docker-compose up 
+docker-compose up -d
+docker network ls
+docker-compose ps
+docker-compose logs app
+docke-compose exec app bash
+ls -lac
+docker-compose down
+(agregando build: . a docker-compose)
+docker-compose build
+docker-compose up -d
+docker-compose logs -f app
+docker-compose exec app bash
+apt-get update
+apt-get install vim
+vim index.js
+(agregando volumes a docker compose)
+docker-compose up -d
+docker-compose scale app=4
+(agregando rango de ports al docker compose)
+docker-compose up -d
+docker-compose logs -f app
+du -sh many_files
+.dockerignore
+docker build -t platziapp -f build/development.Dockerfile .
+docker run --rm it platziapp bash
+docker build -t platziapp -f build/production.Dockerfile .
+docker run --rm it platziapp bash
+ls -lac
+(Docker dentro de docker)
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock docker:18.06.1-ce
+docker
+docker info
+docker ps
+docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/bin/docker wagoodman/dive:latest platziapp
+
+
+
 
